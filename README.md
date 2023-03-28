@@ -13,83 +13,83 @@ Use the MAC Stadium IOS agent as an integration.
 ##Here below is the pipeline to use Azure Devops and GithubAction.
 
 
-trigger:
+  trigger:
 
-main
+  main
 
-pool:
-  vmImage: 'macOS-latest'
+  pool:
+    vmImage: 'macOS-latest'
 
-steps:
-  task: SonarCloudPrepare@1
-  inputs:
-    SonarCloud: 'SonarCloud Connection'
-    organization: '<Your SonarCloud Organization>'
-    scannerMode: 'CLI'
-    configMode: 'manual'
-    cliProjectKey: '<Your SonarCloud Project Key>'
-    cliProjectName: '<Your SonarCloud Project Name>'
-    cliSources: '.'
-  displayName: 'Prepare analysis on SonarCloud'
+  steps:
+    task: SonarCloudPrepare@1
+    inputs:
+      SonarCloud: 'SonarCloud Connection'
+      organization: '<Your SonarCloud Organization>'
+      scannerMode: 'CLI'
+      configMode: 'manual'
+      cliProjectKey: '<Your SonarCloud Project Key>'
+      cliProjectName: '<Your SonarCloud Project Name>'
+      cliSources: '.'
+    displayName: 'Prepare analysis on SonarCloud'
 
-  task: SonarCloudAnalyze@1
-  displayName: 'Code Analysis'
+    task: SonarCloudAnalyze@1
+    displayName: 'Code Analysis'
 
-  task: SonarCloudPublish@1
-  inputs:
-    pollingTimeoutSec: '300'
-  displayName: 'Publish Quality Gate Result'
+    task: SonarCloudPublish@1
+    inputs:
+      pollingTimeoutSec: '300'
+    displayName: 'Publish Quality Gate Result'
 
-  task: BrowserStack@1
-  inputs:
-    credentialsType: 'ServiceEndpoint'
-    browserStackServiceEndpoint: '<Your BrowserStack Service Endpoint>'
-    browserStackUserName: '<Your BrowserStack Username>'
-    browserStackAccessKey: '<Your BrowserStack Access Key>'
-    appPath: '<Path to the IOS app file>'
-  displayName: 'Run BrowserStack Tests'
+    task: BrowserStack@1
+    inputs:
+      credentialsType: 'ServiceEndpoint'
+      browserStackServiceEndpoint: '<Your BrowserStack Service Endpoint>'
+      browserStackUserName: '<Your BrowserStack Username>'
+      browserStackAccessKey: '<Your BrowserStack Access Key>'
+      appPath: '<Path to the IOS app file>'
+    displayName: 'Run BrowserStack Tests'
 
-  task: MacStadiumVMs@0
-  inputs:
-    macStadiumServiceEndpoint: '<Your Mac Stadium Service Endpoint>'
-    virtualMachineName: '<Your IOS Agent Name>'
-    vmUsername: '<Your IOS Agent Username>'
-    vmPassword: '<Your IOS Agent Password>'
-  displayName: 'Mac Stadium IOS Agent Integration'
+    task: MacStadiumVMs@0
+    inputs:
+      macStadiumServiceEndpoint: '<Your Mac Stadium Service Endpoint>'
+      virtualMachineName: '<Your IOS Agent Name>'
+      vmUsername: '<Your IOS Agent Username>'
+      vmPassword: '<Your IOS Agent Password>'
+    displayName: 'Mac Stadium IOS Agent Integration'
 
-  task: CopyFiles@2
-  inputs:
-    SourceFolder: '<Path to the IOS app file>'
-    Contents: '**'
-    TargetFolder: '$(build.artifactstagingdirectory)'
-  displayName: 'Copy files to artifact staging directory'
+    task: CopyFiles@2
+    inputs:
+      SourceFolder: '<Path to the IOS app file>'
+      Contents: '**'
+      TargetFolder: '$(build.artifactstagingdirectory)'
+    displayName: 'Copy files to artifact staging directory'
 
-  task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(build.artifactstagingdirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
-  displayName: 'Publish Artifact'
+    task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(build.artifactstagingdirectory)'
+      ArtifactName: 'drop'
+      publishLocation: 'Container'
+    displayName: 'Publish Artifact'
 
-  task: Xcode@5
-  inputs:
-    actions: 'archive'
-    configuration: 'Release'
-    sdk: 'iphoneos'
-    scheme: '<Your IOS app scheme>'
-    packageApp: true
-    archivePath: '$(build.artifactstagingdirectory)/$(scheme).xcarchive'
-  displayName: 'Xcode Archive'
+    task: Xcode@5
+    inputs:
+      actions: 'archive'
+      configuration: 'Release'
+      sdk: 'iphoneos'
+      scheme: '<Your IOS app scheme>'
+      packageApp: true
+      archivePath: '$(build.artifactstagingdirectory)/$(scheme).xcarchive'
+    displayName: 'Xcode Archive'
 
-  task: Xcode@5
-  inputs:
-    actions: 'export'
-    configuration: 'Release'
-    sdk: 'iphoneos'
-    scheme: '<Your IOS app scheme>'
-    exportPath: '$(build.artifactstagingdirectory)'
-    exportOptions: 'plistFile'
-    export
+    task: Xcode@5
+    inputs:
+      actions: 'export'
+      configuration: 'Release'
+      sdk: 'iphoneos'
+      scheme: '<Your IOS app scheme>'
+      exportPath: '$(build.artifactstagingdirectory)'
+      exportOptions: 'plistFile'
+      export
 
 
 ----------------------------------------------------------------------------------- 
