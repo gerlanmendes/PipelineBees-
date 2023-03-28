@@ -2,10 +2,11 @@
 
 ### Azure devops pipeline for app testing
 
-Esse pipeline tem como objetivo executar o Sonar Cloud e em caso de validação abaixo da regua de qualidade, a aplicação irá parar. 
-Utilizar o BrowserStack durante a comílação utilizando o artefato em ambiente local. 
-Utilizar o agente do MAc Stadium IOS como integração. 
+This pipeline aims to run Sonar Cloud and in case of validation below the quality rule, the application will stop.
+Use BrowserStack during compilation using the artifact in local environment.
+Use the MAC Stadium IOS agent as an integration.
 
+Here below is the pipeline to use Azure Devops and GithubAction.
 #####################################################################################
 
 
@@ -88,15 +89,14 @@ steps:
 
 ##################################################################################### 
   
-- Instale os plug-ins necessários: instale o plug-in SonarCloud, o plug-in BrowserStack e o plug-in de integração do agente Mac Stadium IOS em sua organização Azure DevOps.  
-- Esse é um arquivo YAML que contém um pipeline de integração contínua para uma aplicação iOS. Através desse pipeline, o código da aplicação é analisado pelo SonarCloud e os resultados são publicados em um "quality gate".
-- Em seguida, testes automatizados são executados na plataforma BrowserStack e em um agente iOS da plataforma MacStadium. O resultado desses testes é usado para validar a qualidade do código e do aplicativo.
-- Por fim, o aplicativo é empacotado e exportado em formato de loja de aplicativos para ser distribuído. 
-- Esse pipeline pode ser executado em um ambiente de integração contínua, como o Azure DevOps ou o GitHub Actions.
+- Install the required plugins: Install the SonarCloud plugin, BrowserStack plugin, and Mac Stadium IOS Agent Integration plugin in your Azure DevOps organization.
+- This is a YAML file that contains a continuous integration pipeline for an iOS application. Through this pipeline, the application code is analyzed by SonarCloud and the results are published in a "quality gate".
+- Then, automated tests are run on the BrowserStack platform and on an iOS agent from the MacStadium platform. The result of these tests is used to validate the quality of the code and the application.
+- Finally, the app is packaged and exported in app store format for distribution.
+- This pipeline can run in a continuous integration environment such as Azure DevOps or GitHub Actions.
   
   
-  ### Mostrando um pouco de como ficou o aplicativo em fase de teste com algunas páginas disponiveis dentro do proprio app. 
-  
+   ### Showing a bit of how the app was in the test phase with some pages available within the app itself.
   
   ![image](https://user-images.githubusercontent.com/80284143/228021034-846819be-b593-4de7-a5e5-1985db43f44b.png)
 
@@ -111,6 +111,13 @@ steps:
 
   
   ![image](https://user-images.githubusercontent.com/80284143/228035896-c5db2cb1-b165-4943-8753-1e9cd1f8dffd.png)
+  
+  
+  #####################################################################################
+  
+  
+  
+  
 
   
   
