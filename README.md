@@ -6,10 +6,11 @@ This pipeline aims to run Sonar Cloud and in case of validation below the qualit
 Use BrowserStack during compilation using the artifact in local environment.
 Use the MAC Stadium IOS agent as an integration.
 
-Here below is the pipeline to use Azure Devops and GithubAction.
+
+-----------------------------------------------------------------------------------
 
 
-#####################################################################################
+##Here below is the pipeline to use Azure Devops and GithubAction.
 
 
 trigger:
@@ -91,7 +92,7 @@ steps:
     export
 
 
-##################################################################################### 
+----------------------------------------------------------------------------------- 
 
 
 - Install the required plugins: Install the SonarCloud plugin, BrowserStack plugin, and Mac Stadium IOS Agent Integration plugin in your Azure DevOps organization.
