@@ -10,7 +10,7 @@ Use the MAC Stadium IOS agent as an integration.
 -----------------------------------------------------------------------------------
 
 
-##Here below is the pipeline to use Azure Devops and GithubAction.
+## Here below is the pipeline to use Azure Devops and GithubAction.
 
 
   trigger:
