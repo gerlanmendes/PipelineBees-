@@ -273,7 +273,7 @@ Overall, this task is useful for publishing the output of a build process as an 
           inputs:
             PathtoPublish: '$(build.artifactstagingdirectory)'
             ArtifactName: 'drop'
-            publishLocation: 'Container'
+            publishLocation: 'path browserstack or xcode simulator'
           displayName: 'Publish Artifact'
 
     
