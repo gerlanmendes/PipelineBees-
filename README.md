@@ -280,7 +280,7 @@ Overall, this task is useful for publishing the output of a build process as an 
   ------------------------------------------------------------------------------------------------------------------------------------------------
   
   
-- The Xcode@5 task likely invokes the Xcode command-line tools with the specified inputs to perform an archive action on the iOS app project specified by the scheme. The configuration input specifies which build configuration to use, Release in this case. The sdk input specifies which iOS SDK to use, iphoneos in this case.
+- The Xcode@5 task  invokes the Xcode command-line tools with the specified inputs to perform an archive action on the iOS app project specified by the scheme. The configuration input specifies which build configuration to use, Release in this case. The sdk input specifies which iOS SDK to use, iphoneos in this case.
 The packageApp input indicates that the app should be packaged after it is built. The archivePath input specifies the location where the resulting .xcarchive file should be saved, which in this case is the artifact staging directory.
 The displayName input provides a descriptive name for the task in the pipeline.
 Overall, this task is useful for building and archiving an iOS app in a pipeline, which can then be published or distributed to users.  
